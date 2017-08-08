@@ -11,12 +11,6 @@ cs_add_library(${PROJECT_NAME}
   src/kdtree.c
 )
 
-include_directories(include ${catkin_INCLUDE_DIRS})
-
-catkin_package(
-  INCLUDE_DIRS include ${catkin_INCLUDE_DIRS}
-)
-
 ##########
 # EXPORT #
 ##########

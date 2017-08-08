@@ -3,25 +3,18 @@ project(prune_pointcloud)
 
 add_definitions(-std=c++11)
 
-find_package(catkin REQUIRED COMPONENTS
-  tf
-  sensor_msgs
-  pcl_conversions
-  pcl_ros
-  geometry_msgs
-)
+find_package(catkin_simple REQUIRED)
+catkin_simple(ALL_DEPS_REQUIRED)
 
-catkin_package(
-  INCLUDE_DIRS include
-)
-add_executable(prune_node src/prune_node.cc src/prune.cc)
+############
+# BINARIES #
+############
+cs_add_executable(prune_node src/prune_node.cc
+                             src/prune.cc)
 
-include_directories(
-  include
-  ${catkin_INCLUDE_DIRS}
-  ${Eigen_INCLUDE_DIRS}
-)
 
-target_link_libraries(prune_node
-  ${catkin_LIBRARIES}
-)
+##########
+# EXPORT #
+##########
+cs_install()
+cs_export()
